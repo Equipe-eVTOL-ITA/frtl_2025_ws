@@ -1,0 +1,89 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "simulate",
+            "detail": "Launch Gazebo Simulation",
+            "type": "shell",
+            "command": "./tasks/simulate.sh ${input:sim_world}",
+            "problemMatcher": []
+        },
+        {
+            "label": "image bridge",
+            "type": "shell",
+            "command": "./tasks/image_bridge.sh",
+            "problemMatcher": [],
+            "detail": "Launch ros_gz_image bridge"
+        },
+        {
+            "label": "simulate & image bridge & agent",
+            "dependsOn": [
+                "simulate",
+                "image bridge",
+                "agent"
+            ],
+            "detail": "Launch simulation, gz-ro2 image bridge and uxrce-dds agent",
+            "problemMatcher": []
+        },
+        {
+            "label": "agent",
+            "detail": "Launch Micro XRCE Agent",
+            "type": "shell",
+            "command": "./tasks/agent.sh",
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "detail": "Build workspace (default)",
+            "type": "shell",
+            "command": "./tasks/build.sh ${input:buildFolder}",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "setup",
+            "detail": "Set up the workspace",
+            "type": "shell",
+            "command": "./tasks/setup.sh",
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id" : "sim_world",
+            "description": "Choose World to launch from",
+            "type": "pickString",
+            "options": [
+                "fase1",
+                "fase2",
+                "fase3",
+                "fase4",
+                "default"
+            ],
+            "default": "fase1"
+        },
+        {
+            "id" : "buildFolder",
+            "description": "Which targets to build?",
+            "type": "pickString",
+            "options": [
+                "all",
+                "frtl_2024",
+                "dependencies",
+                "gesture_packages",
+                "custom_msgs",
+                "cv_utils",
+                "fase1",
+                "fase2",
+                "fase3",
+                "fase4"
+            ],
+            "default": "all"
+        }
+    ]
+}

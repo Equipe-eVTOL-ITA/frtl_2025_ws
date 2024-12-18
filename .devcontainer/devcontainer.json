@@ -1,0 +1,43 @@
+{
+  "name": "FRTL 2024 Workspace",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "runArgs": [
+    "--network=host",
+    "--cap-add=SYS_PTRACE",
+    "--security-opt=seccomp:unconfined",
+    "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+    "--gpus", "all"
+],
+"containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}",
+    "LIBGL_ALWAYS_SOFTWARE": "1"
+},
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true
+      },
+      "extensions": [
+        "ms-iot.vscode-ros",
+        "ms-python.python",
+        "betwo.b2-catkin-tools",
+        "ms-azuretools.vscode-docker",
+        "ms-python.python",
+        "ms-vscode.cpptools",
+        "redhat.vscode-yaml",
+        "ms-iot.vscode-ros",
+        "twxs.cmake",
+        "yzhang.markdown-all-in-one"
+      ]
+    }
+  },
+  "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind"
+  ],
+  "postCreateCommand": "xhost +local: && ./tasks/setup.sh"
+}

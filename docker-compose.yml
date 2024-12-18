@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  ros2-workspace:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.ros2
+    volumes:
+      - ./src:/workspace/src
+    ports:
+      - "8888:8888/udp"  # MicroXRCE-Agent port
+    devices:
+      - /dev/video0:/dev/video0  # Webcam access
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+
+  px4-sim:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.sim
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    ports:
+      - "14550:14550/udp"
+      - "14580:14580/udp"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
