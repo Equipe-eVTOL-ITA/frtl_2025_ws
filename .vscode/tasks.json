@@ -51,6 +51,57 @@
             "type": "shell",
             "command": "./tasks/setup.sh",
             "problemMatcher": []
+        },
+        {
+            "label": "gazebo kill",
+            "type": "shell",
+            "command": "pkill -9 -f 'gz sim' || true",
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false,
+                "close": true
+            },
+            "problemMatcher": [],
+            "dependsOn":["px4_sitl_cleanup"]
+        },
+
+        {
+            "label": "px4_sitl_cleanup",
+            "type": "shell",
+            "command": "rm -rfv /tmp/px4* || true",
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false,
+                "close": true
+            },
+            "problemMatcher": [],
+            "dependsOn":["px4_kill"]
+        },
+        {
+            "label": "px4_kill",
+            "type": "shell",
+            "command": "pkill -9 px4 || true",
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "revealProblems": "onProblem",
+                "focus": false,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": false,
+                "close": true
+            },
+            "problemMatcher": []
         }
     ],
     "inputs": [

@@ -2,7 +2,7 @@
 set -e
 
 # Define the workspace and source directory
-WORKSPACE_DIR=~/frtl_2024_ws
+WORKSPACE_DIR=~/frtl_2025_ws
 SRC_DIR=$WORKSPACE_DIR/src
 
 # Create source directory if it does not exist

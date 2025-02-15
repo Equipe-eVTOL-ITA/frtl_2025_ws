@@ -5,9 +5,9 @@ if [ -f install/setup.bash ]; then
     source install/setup.bash
 fi
 
-export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/home/vinicius/PX4-Autopilot/Tools/simulation/gz/models
+export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/home/ros/PX4-Autopilot-v1.15.0/Tools/simulation/gz/models
 
-cd ~/PX4-Autopilot
+cd ~/PX4-Autopilot-v1.15.0
 
 PX4_SYS_AUTOSTART=4001
 PX4_GZ_WORLD=$1

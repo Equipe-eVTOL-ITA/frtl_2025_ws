@@ -7,14 +7,17 @@
   "runArgs": [
     "--network=host",
     "--cap-add=SYS_PTRACE",
+    "--env DISPLAY=$DISPLAY",
     "--security-opt=seccomp:unconfined",
-    "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
-    "--gpus", "all"
-],
-"containerEnv": {
+    "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw",
+    "--env=QT_X11_NO_MITSHM=1",
+    "--env=XAUTHORITY=/tmp/.docker.xauth",
+    "--privileged"
+  ],
+  "containerEnv": {
     "DISPLAY": "${localEnv:DISPLAY}",
     "LIBGL_ALWAYS_SOFTWARE": "1"
-},
+  },
   "customizations": {
     "vscode": {
       "settings": {
@@ -39,5 +42,5 @@
   "mounts": [
     "source=${localWorkspaceFolder},target=/workspace,type=bind"
   ],
-  "postCreateCommand": "xhost +local: && ./tasks/setup.sh"
+  "postCreateCommand": "xhost +local: && XAUTH=/tmp/.docker.xauth && touch $XAUTH && xauth add ${localEnv:HOSTNAME}/unix${localEnv:DISPLAY} . $(mcookie) && ./tasks/setup.sh"
 }

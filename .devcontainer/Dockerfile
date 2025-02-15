@@ -26,19 +26,34 @@ RUN apt update && apt install -y \
     && apt update && apt install -y ros-humble-desktop ros-dev-tools \
     && echo "source /opt/ros/humble/setup.bash" >> /etc/bash.bashrc
 
-# Setup user for development
-RUN useradd -m dev && usermod -aG sudo dev
-USER dev
-WORKDIR /home/dev
+# Create a non-root user for development
+ARG USERNAME=ros
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid $USER_GID $USERNAME \
+  && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
+  && apt-get update && apt-get install -y sudo \
+  && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
+  && chmod 0440 /etc/sudoers.d/$USERNAME \
+  && rm -rf /var/lib/apt/lists/*
+
+USER $USERNAME
+WORKDIR /home/$USERNAME
+
+# Set up autocompletion and environment
+RUN echo "source /opt/ros/humble/setup.bash" >> /home/$USERNAME/.bashrc && \
+    echo "if [ -f /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash ]; then source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash; fi" >> /home/$USERNAME/.bashrc
 
 # MicroXRCE-Agent
 RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git ~/MicroXRCE-Agent && \
-    cd ~/MicroXRCE-Agent && mkdir build && cd build && cmake .. && make && make install && ldconfig
+    cd ~/MicroXRCE-Agent && mkdir build && cd build && cmake .. && make && sudo make install && sudo ldconfig
 
 # PX4-Autopilot
-RUN git clone --branch v1.15.2 --recursive https://github.com/PX4/PX4-Autopilot.git ~/PX4-Autopilot && \
-    bash ~/PX4-Autopilot/Tools/setup/ubuntu.sh && \
-    cd ~/PX4-Autopilot && make px4_sitl
+RUN git clone --branch v1.15.2 --recursive --depth 1 https://github.com/PX4/PX4-Autopilot.git ~/PX4-Autopilot
+RUN bash ~/PX4-Autopilot/Tools/setup/ubuntu.sh
+RUN cd ~/PX4-Autopilot && make px4_sitl
 
 # Grant display, camera, and network access
 ENV DISPLAY=:0
+ENV QT_X11_NO_MITSHM=1
