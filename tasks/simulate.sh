@@ -5,14 +5,15 @@ if [ -f install/setup.bash ]; then
     source install/setup.bash
 fi
 
-export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/home/ros/PX4-Autopilot-v1.15.0/Tools/simulation/gz/models
+export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/home/ceccon/PX4-Autopilot/Tools/simulation/gz/models
+export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:/home/ceccon/PX4-Autopilot/Tools/simulation/gz
 
-cd ~/PX4-Autopilot-v1.15.0
+cd ~/PX4-Autopilot
 
 PX4_SYS_AUTOSTART=4001
 PX4_GZ_WORLD=$1
 PX4_GZ_MODEL=x500_simulation
-PX4_GZ_MODEL_POSE="8.0, 2.2, 0.6, 0.0, 0.0, 1.57"
+PX4_GZ_MODEL_POSE="0.0, 0.0, 0.0, 0.0, 0.0, 0.0"
 
 
 PX4_SYS_AUTOSTART=$PX4_SYS_AUTOSTART \

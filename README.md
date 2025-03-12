@@ -153,13 +153,42 @@ make px4_sitl
 
 O script `setup.sh` fará o download dos repositórios necessários, além de buildar o workspace todo.
 
+### OBS: Memória RAM insuficiente para build
+
+Se o seu PC congelar durante o processo de build no setup.sh, pode ser que você esteja com memória RAM insuficiente (geralmente 16GB não é suficiente). Para resolver, vamos aumentar o tamanho da memória Swap (espaço de armazenamento tratado como RAM).
+
+```bash
+# Turn swap off
+# This moves stuff in swap to the main memory and might take several minutes
+sudo swapoff -a
+
+# Create an empty swapfile
+# Note that "1M" is basically just the unit and count is an integer.
+# Together, they define the size. In this case 8GiB.
+sudo dd if=/dev/zero of=/swapfile bs=1M count=8192
+
+# Set the correct permissions
+sudo chmod 0600 /swapfile
+
+sudo mkswap /swapfile  # Set up a Linux swap area
+sudo swapon /swapfile  # Turn the swap on
+```
+
+Depois, rode: 
+
+`sudo nano /etc/fstab` 
+
+E cole na última linha:
+
+ `/swapfile none swap sw 0 0`
+
 
 ## Teste para ver se está tudo ok
 
 - **Primeiro terminal**: rode a simulação PX4 com Gazebo
   
   ```bash
-  export GZ_SIM_RESOURCE_PATH=/home/vinicius/PX4-Autopilot/Tools/simulation/gz
+  #export GZ_SIM_RESOURCE_PATH=/home/<nome_usuario>/PX4-Autopilot/Tools/simulation/gz
   cd ~/PX4-Autopilot && make px4_sitl gz_x500
   ```
 
@@ -198,6 +227,7 @@ Depois disso, basta:
 ```bash
 ros2 run frtl_2024_cv_utils yolo_classifier
 ```
+
 
 ## Referências
 

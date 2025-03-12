@@ -110,13 +110,14 @@
             "description": "Choose World to launch from",
             "type": "pickString",
             "options": [
+                "openlanes",
                 "fase1",
                 "fase2",
                 "fase3",
                 "fase4",
                 "default"
             ],
-            "default": "fase1"
+            "default": "openlanes"
         },
         {
             "id" : "buildFolder",
