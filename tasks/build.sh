@@ -11,31 +11,19 @@ then
     BUILD_PATH=""
 elif [ $1 = dependencies ]
 then
-    BUILD_PATH="--paths src/px4_msgs/* fsm/*"
-elif [ $1 = custom_msgs ]
-then
-    BUILD_PATH="--paths src/custom_msgs"
+    BUILD_PATH="--paths src/px4_msgs/* src/fsm/* src/custom_msgs src/px4_ros2_interface/*"
 elif [ $1 = gesture_packages ]
 then
     BUILD_PATH="--paths src/camera_publisher src/gesture_classifier"
-elif [ $1 = frtl_2024 ]
+elif [ $1 = cbr_2025 ]
 then
-    BUILD_PATH="--paths src/frtl_2024/*"
-elif [ $1 = cv_utils ]
+    BUILD_PATH="--paths src/cbr_2025/*"
+elif [ $1 = robocup_2025 ]
 then
-    BUILD_PATH="--paths src/frtl_2024/frtl_2024_cv_utils"    
-elif [ $1 = fase1 ]
+    BUILD_PATH="--paths src/robocup_2025/*"
+elif [ $1 = sae_2025 ]
 then
-    BUILD_PATH="--paths src/frtl_2024/frtl_2024_fase1"
-elif [ $1 = fase2 ]
-then
-    BUILD_PATH="--paths src/frtl_2024/frtl_2024_fase2"
-elif [ $1 = fase3 ]
-then
-    BUILD_PATH="--paths src/frtl_2024/frtl_2024_fase3"
-elif [ $1 = fase4 ]
-then
-    BUILD_PATH="--paths src/frtl_2024/frtl_2024_fase4"
+    BUID_PATH="--paths src/sae_2025/*"
 else
     exit 1
 fi

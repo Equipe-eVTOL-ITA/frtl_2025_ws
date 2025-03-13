@@ -55,51 +55,16 @@
         {
             "label": "gazebo kill",
             "type": "shell",
-            "command": "pkill -9 -f 'gz sim' || true",
+            "command": "rm -rfv /tmp/px4* || true && pkill -9 px4 || true && pkill -9 -f 'gz sim' || true",
             "presentation": {
-                "echo": true,
-                "reveal": "never",
-                "revealProblems": "onProblem",
-                "focus": false,
-                "panel": "dedicated",
-                "showReuseMessage": false,
-                "clear": false,
-                "close": true
-            },
-            "problemMatcher": [],
-            "dependsOn":["px4_sitl_cleanup"]
-        },
-
-        {
-            "label": "px4_sitl_cleanup",
-            "type": "shell",
-            "command": "rm -rfv /tmp/px4* || true",
-            "presentation": {
-                "echo": true,
-                "reveal": "never",
-                "revealProblems": "onProblem",
-                "focus": false,
-                "panel": "dedicated",
-                "showReuseMessage": false,
-                "clear": false,
-                "close": true
-            },
-            "problemMatcher": [],
-            "dependsOn":["px4_kill"]
-        },
-        {
-            "label": "px4_kill",
-            "type": "shell",
-            "command": "pkill -9 px4 || true",
-            "presentation": {
-                "echo": true,
-                "reveal": "never",
-                "revealProblems": "onProblem",
-                "focus": false,
-                "panel": "dedicated",
-                "showReuseMessage": false,
-                "clear": false,
-                "close": true
+            "echo": true,
+            "reveal": "never",
+            "revealProblems": "onProblem",
+            "focus": false,
+            "panel": "dedicated",
+            "showReuseMessage": false,
+            "clear": false,
+            "close": true
             },
             "problemMatcher": []
         }
@@ -125,15 +90,11 @@
             "type": "pickString",
             "options": [
                 "all",
-                "frtl_2024",
                 "dependencies",
                 "gesture_packages",
-                "custom_msgs",
-                "cv_utils",
-                "fase1",
-                "fase2",
-                "fase3",
-                "fase4"
+                "cbr_2025",
+                "robocup_2025",
+                "sae_2025"
             ],
             "default": "all"
         }
