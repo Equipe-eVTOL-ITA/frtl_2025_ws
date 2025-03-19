@@ -132,11 +132,24 @@ sudo ldconfig /usr/local/lib/
 
 ```sh
 cd ~
-git clone --branch v1.15.0 --recursive --depth 1 https://github.com/PX4/PX4-Autopilot.git
+git clone --branch v1.15.4 --recursive --depth 1 https://github.com/PX4/PX4-Autopilot.git
+cd PX4-Autopilot/Tools/simulation/gz
+git checkout main
+git remote remove origin
+git remote add origin https://github.com/Equipe-eVTOL-ITA/PX4-gazebo-models.git
+git pull origin main
+cd ~
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
-cd PX4-Autopilot/
-make px4_sitl
 ```
+
+Faça logout e login de novo para efetivar as mudanças.
+
+```sh
+cd ~/PX4-Autopilot
+make px4_sitl 
+```
+
+OBS: Quando perguntado sobre `IF YOU DID NOT CHANGE THIS FILE (OR YOU DON'T KNOW WHAT A SUBMODULE IS):`, Escreva `y` e pressione `ENTER`.
 
 ### 6. Setup do frtl_2025_ws
 
@@ -145,9 +158,10 @@ make px4_sitl
   ```bash
   cd ~
   git clone https://github.com/Equipe-eVTOL-ITA/frtl_2025_ws.git
+  cd frtl_2025_ws
+  code .
   ```
-
-- Abra esse repositório no VS Code.
+O repositório deve abrir no VSCode.
 
  - Execute a task Setup (`crtl+shift+P` e selecione `Tasks: run Task`).
 
@@ -185,24 +199,30 @@ E cole na última linha:
 
 ## Teste para ver se está tudo ok
 
-- **Primeiro terminal**: rode a simulação PX4 com Gazebo
-  
-  ```bash
-  #export GZ_SIM_RESOURCE_PATH=/home/<nome_usuario>/PX4-Autopilot/Tools/simulation/gz
-  cd ~/PX4-Autopilot && make px4_sitl gz_x500
-  ```
+1. **Execute a task `simulate & image bridge & agent`. Selecione o mundo `fase1`.**
 
-- **Segundo terminal**: inicie o agente uXRCE-DDS
-  
-  ```bash
-  MicroXRCEAgent udp4 -p 8888
-  ```
+Isso deve abrir a simulação (Gazebo + PX4) no primeiro terminal, o image_bridge no segundo terminal e o agente MicroXRCE-DDS no terceiro terminal.
+
+2. **Teste um dos nós de ROS 2 para controle offboard do drone:**
+
+  Abrindo um novo terminal (quarto terminal), execute:
+
+```sh
+source install/setup.bash
+ros2 run cbr_2025_fase1 fase1_dummy
+```
+
+O drone deve executar um circuito básico de landing e takeoff nas bases da arena.
 
 ## Rodando a simulação
 
-- Execute a task Agent
-- Execute a task Simulate
-- Abra um terminal: 
+- A task `simulate & image bridge & agent` faz, como o nome diz, 3 coisas em uma.
+
+- Para rodar a simulação com controle Offboard, `simulate` e `agent` sempre serão necessários.
+
+- Para simulações em que a câmera não é necessária, é recomendável rodar somente as tasks `simulate` e `agent`. Assim, o computador não precisa gastar recursos rodando o `image_bridge`.
+
+- Para rodar os nós de offboard control, basta executar:
   ```bash
   #Sempre importar o ros2 para o terminal
   source /opt/ros/humble/setup.bash && source install/local_setup.bash
@@ -210,8 +230,7 @@ E cole na última linha:
   #Rodar o no de ros2
   ros2 run <nome_do_pacote> <nome_do_executavel>
   ```
-  
-  - Ex: `ros2 run frtl_2024_fase1 fase1`
+    - Ex: `ros2 run frtl_2024_fase1 fase1`
 
 ## Yolo Classifier
 
@@ -225,7 +244,7 @@ pip install ultralytics
 Depois disso, basta:
 
 ```bash
-ros2 run frtl_2024_cv_utils yolo_classifier
+ros2 run cbr_2025_cv_utils yolo_classifier
 ```
 
 
