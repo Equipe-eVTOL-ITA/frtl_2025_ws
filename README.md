@@ -137,7 +137,7 @@ cd PX4-Autopilot/Tools/simulation/gz
 git checkout main
 git remote remove origin
 git remote add origin https://github.com/Equipe-eVTOL-ITA/PX4-gazebo-models.git
-git pull origin main
+git pull origin main --rebase
 cd ~
 bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
 ```
