@@ -14,7 +14,7 @@ PX4_SYS_AUTOSTART=4001
 PX4_GZ_WORLD=$1
 case $1 in
     openlanes)
-        PX4_GZ_MODEL_POSE="0.0, 0.0, 0.2, 0.0, 0.0, 0.0"
+        PX4_GZ_MODEL_POSE="0.0, 0.0, 0.05, 0.0, 0.0, 0.0"
         PX4_SIM_MODEL=x500_tdp
         ;;
     fase1)
