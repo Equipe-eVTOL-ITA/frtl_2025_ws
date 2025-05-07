@@ -21,6 +21,10 @@
     path = src/robocup_2025
     url = https://github.com/Equipe-eVTOL-ITA/robocup_2025.git
 
+[submodule "src/sae_2025"]
+    path = src/sae_2025
+    url = https://github.com/Equipe-eVTOL-ITA/sae_2025.git
+
 [submodule "src/camera_publisher"]
     path = src/camera_publisher
     url = https://github.com/Equipe-eVTOL-ITA/camera_publisher.git
