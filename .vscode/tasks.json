@@ -75,6 +75,9 @@
             "description": "Choose World to launch from",
             "type": "pickString",
             "options": [
+                "sae1",
+                "sae2",
+                "sae3",
                 "openlanes",
                 "fase1",
                 "fase2",
@@ -82,7 +85,7 @@
                 "fase4",
                 "default"
             ],
-            "default": "openlanes"
+            "default": "sae1"
         },
         {
             "id" : "buildFolder",

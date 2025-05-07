@@ -5,4 +5,4 @@ if [ -f install/setup.bash ]; then
     source install/setup.bash
 fi
 
-ros2 run ros_gz_image image_bridge /vertical_camera /angled_camera --ros-args -p transport:=compressed
+ros2 run ros_gz_image image_bridge /vertical_camera /horizontal_camera --ros-args -p transport:=compressed
