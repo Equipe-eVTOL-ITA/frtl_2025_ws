@@ -1,10 +1,5 @@
-src/fsm/
-src/json/
-src/px4_msgs/
-src/px4_ros_com/
 build/
 install/
 log/
-gazebo_models/
 bucket_detections/
 QGroundControl.AppImage
