@@ -23,7 +23,7 @@ then
     BUILD_PATH="--paths src/robocup_2025/*"
 elif [ $1 = sae_2025 ]
 then
-    BUID_PATH="--paths src/sae_2025/*"
+    BUILD_PATH="--paths src/sae_2025/*"
 else
     exit 1
 fi
