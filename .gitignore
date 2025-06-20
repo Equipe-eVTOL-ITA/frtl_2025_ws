@@ -3,3 +3,5 @@ install/
 log/
 bucket_detections/
 QGroundControl.AppImage
+/__pycache__/
+*.pyc
