@@ -36,3 +36,15 @@
 [submodule "src/custom_msgs"]
     path = src/custom_msgs
     url = https://github.com/Equipe-eVTOL-ITA/custom_msgs.git
+
+[submodule "src/slam_bridge"]
+    path = src/slam_bridge
+    url = https://github.com/Equipe-eVTOL-ITA/slam_bridge.git
+
+[submodule "src/sai_slam"]
+    path = src/sai_slam
+    url = https://github.com/Equipe-eVTOL-ITA/sai_slam.git
+
+[submodule "src/oak_vio"]
+    path = src/oak_vio
+    url = https://github.com/Equipe-eVTOL-ITA/oak_vio.git

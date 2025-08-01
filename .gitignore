@@ -5,3 +5,6 @@ bucket_detections/
 QGroundControl.AppImage
 /__pycache__/
 *.pyc
+imagens_calib/
+imagens_calib_cropped/
+cbr_old/

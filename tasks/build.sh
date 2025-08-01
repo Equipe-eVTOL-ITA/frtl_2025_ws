@@ -24,6 +24,12 @@ then
 elif [ $1 = sae_2025 ]
 then
     BUILD_PATH="--paths src/sae_2025/*"
+elif [ $1 = slam_bridge ]
+then
+    BUILD_PATH="--paths src/slam_bridge"
+elif  [ $1 = oak_vio ]
+then
+    BUILD_PATH="--paths src/oak_vio"
 else
     exit 1
 fi
@@ -38,7 +44,7 @@ fi
 # Set the default build type
 BUILD_TYPE=RelWithDebInfo
 colcon build \
-        --symlink-install \
-        --cmake-args "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" "-DCMAKE_EXPORT_COMPILE_COMMANDS=On" \
-        -Wall -Wextra -Wpedantic \
+    --symlink-install \
+    --cmake-args "-DCMAKE_BUILD_TYPE=$BUILD_TYPE" "-DCMAKE_EXPORT_COMPILE_COMMANDS=On" \
+    -Wall -Wextra -Wpedantic \
         $BUILD_PATH

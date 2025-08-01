@@ -79,7 +79,7 @@
                 "sae2",
                 "sae3",
                 "openlanes",
-                "fase1",
+                "fase1_25",
                 "fase2",
                 "fase3",
                 "fase4",
@@ -97,7 +97,9 @@
                 "gesture_packages",
                 "cbr_2025",
                 "robocup_2025",
-                "sae_2025"
+                "sae_2025",
+                "slam_bridge",
+                "oak_vio"
             ],
             "default": "all"
         }

@@ -6,7 +6,7 @@ if [ -f install/setup.bash ]; then
 fi
 
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/PX4-Autopilot/Tools/simulation/gz/models
-export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:~/PX4-Autopilot/Tools/simulation/gz/models
+export GAZEBO_RESOURCE_PATH=$GAZEBO_RESOURCE_PATH:~/PX4-Autopilot/Tools/simulation/gz/worlds
 
 cd ~/PX4-Autopilot
 
@@ -23,26 +23,26 @@ case $1 in
         ;;
     sae3)
         PX4_GZ_MODEL_POSE="0.0, 0.0, 0.05, 0.0, 0.0, 0.0"
-        PX4_SIM_MODEL=x500_sae
+        PX4_SIM_MODEL=x500_sae   
         ;;
     openlanes)
         PX4_GZ_MODEL_POSE="0.0, 0.0, 0.05, 0.0, 0.0, 0.0"
         PX4_SIM_MODEL=x500_tdp
         ;;
-    fase1)
-        PX4_GZ_MODEL_POSE="8.0, 2.2, 0.6, 0.0, 0.0, 1.57"
+    fase1_25)
+        PX4_GZ_MODEL_POSE="8.0, 2.0, 0.6, 0.0, 0.0, 1.57"
         PX4_SIM_MODEL=x500_simulation
         ;;
     fase2)
-        PX4_GZ_MODEL_POSE="8.0, 2.2, 0.6, 0.0, 0.0, 1.57"
+        PX4_GZ_MODEL_POSE="8.0, 2.0, 0.6, 0.0, 0.0, 1.57"
         PX4_SIM_MODEL=x500_simulation
         ;;
     fase3)
-        PX4_GZ_MODEL_POSE="8.0, 2.2, 0.6, 0.0, 0.0, 1.57"
+        PX4_GZ_MODEL_POSE="8.0, 2.0, 0.6, 0.0, 0.0, 1.57"
         PX4_SIM_MODEL=x500_simulation
         ;;
     fase4)
-        PX4_GZ_MODEL_POSE="8.0, 2.2, 0.6, 0.0, 0.0, 1.57"
+        PX4_GZ_MODEL_POSE="8.0, 2.0, 0.6, 0.0, 0.0, 1.57"
         PX4_SIM_MODEL=x500_simulation
         ;;
     *)
