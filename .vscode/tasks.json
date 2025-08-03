@@ -99,7 +99,8 @@
                 "robocup_2025",
                 "sae_2025",
                 "slam_bridge",
-                "oak_vio"
+                "oak_vio",
+                "custom_msgs"
             ],
             "default": "all"
         }
