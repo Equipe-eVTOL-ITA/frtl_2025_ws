@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>itajuba_drone_lib</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="moisesmgft@gmail.com">Moisés Moreira Gonçalves Feltrin Thimoteo</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend> <!--biblioteca cpp para ros2-->
+  <depend>px4_msgs</depend> <!--msgs personalizadas para comunicação com PX4 (obter dados de IMU, GPS, pos, atitude, ...)-->
+  <depend>tf2</depend> <!--transformação de coordenadas em ROS2-->
+  <depend>Eigen3</depend> <!--biblioteca para alge lin-->
+  <depend>custom_msgs</depend>
+  <depend>geometry_msgs</depend> <!--Point, Quaternion, Pose, Twist, Vector3-->
+  <depend>nav_msgs</depend> <!--Odometry, Path, OccupancyGrid-->
+    <!--Para utilizar o OccupancyGrid, é necessário ter nodes que publiquem informações de odometria e de algum sensoriamento
+    (LiDAR ou câmera de profundidade) para que o mapa seja gerado. Caso alguma dessas informações não seja fornecida,
+    esse Node de OccupancyGrid ficará inerte, apenas aguardando os dados...
+    Os tópicos ROS que recebem os dados desses sensores costumam ter um nome parecido com **/scan**. Eg: LaserScan
+    Mas isso para o caso de LiDAR... Caso utilizássemos uma câmera de profundidade, precisaríamos do pacote
+    depthimage_to_laserscan (ou outro)
+    -->
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
