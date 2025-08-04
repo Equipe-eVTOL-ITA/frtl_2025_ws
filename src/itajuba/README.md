@@ -1,0 +1,1 @@
+# Repositório para a competição de Drones SkyBees em Itajubá, 2025
