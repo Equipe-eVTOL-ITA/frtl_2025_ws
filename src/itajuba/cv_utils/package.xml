@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>itajuba_cv_utils</name> <!--eh com esse nome que o pacote eh identificado em ros2, eg: run, launch,...-->
+  <version>0.1.0</version>
+  <description>Computer vision functions for SkyBees Competition</description>
+
+  <!-- Maintainer and license information -->
+  <maintainer email="angelo.marconi.pavan@gmail.com">Angelo Pavan</maintainer>
+  <license>TODO: License declaration</license>
+
+  <!-- Build tools -->
+  <buildtool_depend>ament_cmake</buildtool_depend> <!--sistema de build para pacotes cpp-->
+  <buildtool_depend>ament_python</buildtool_depend> <!--sistema de build para pacotes python puros-->
+
+  <!-- Dependências -->
+  <depend>rclpy</depend> <!--ros2 para python-->
+  <depend>std_msgs</depend> <!-- mensagens padraodo ROS-->
+  <depend>cv_bridge</depend> <!--ponte entre mensagens ros2 e imagens do opencv-->
+  <!--<depend>ultralytics</depend>--> <!--implementa deteccao de objetos via YOLO-->
+  <depend>vision_msgs</depend> <!--define msgs padrão para tarefas de visão computacional, eg: Detection2DArray-->
+  <depend>custom_msgs</depend> <!--contém msgs personalizadas (vc quem as cria!!)-->
+
+  <!--dependencias necessárias apenas em tempo de execução-->
+  <!--<exec_depend>pyzbar</exec_depend>--> <!--para identificar qr codes de imagens-->
+  <exec_depend>opencv-python</exec_depend> <!--opencv-->
+
+  <!-- Pacotes necessários apenas para rodar os testes -->
+  <test_depend>ament_lint_auto</test_depend> <!--essas duas dependencias servem para garantir boas praticas-->
+  <test_depend>ament_lint_common</test_depend>
+
+  <!-- Exporting build type -->
+  <export>
+    <build_type>ament_python</build_type> <!--escolhe a ferramenta de build-->
+    <!--No caso, essa linha diz explicitamente ao colcon que este é um pacote python-->
+    <!--isso faz com que o colcon busque por um arquivo setup.py no diretório raiz do pacote-->
+  </export>
+</package>
