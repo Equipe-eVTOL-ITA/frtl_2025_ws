@@ -16,10 +16,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
 
-        '''
-        Define pontos de entrada para o pacote.
-        Permite que o setuptools crie scripts executáveis que chamam funções específicas no seu código
-        '''
+        # Define pontos de entrada para o pacote.
+        # Permite que o setuptools crie scripts executáveis que chamam funções específicas no seu código
 
         'console_scripts': [
             #'yolo_classifier = yolo_classifier.yolo_classifier:main',
