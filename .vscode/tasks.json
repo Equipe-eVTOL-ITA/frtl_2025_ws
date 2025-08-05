@@ -81,7 +81,21 @@
             "type": "shell",
             "command": "./tasks/onboard.sh ${input:packageSelect}",
             "problemMatcher": []
-        }
+        },
+        {
+            "label": "mavlink-router",
+            "detail": "mavlink-router",
+            "type": "shell",
+            "command": "./tasks/mavlink_router.sh",
+            "problemMatcher": []
+        },
+        { 
+            "label": "apertar",
+            "detail": "Apertar gancho",
+            "type": "shell",
+            "command": "./tasks/apertar.sh",
+            "problemMatcher": []
+        },
     ],
     "inputs": [
         {
