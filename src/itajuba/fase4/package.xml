@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>itajuba_fase1</name>
+  <name>itajuba_fase4</name>
   <version>0.0.0</version>
   <description>Solution for level 4 in SkyBees Competition</description>
   <maintainer email="angelo.marconi.pavan@gmail.com">Ângelo Pavan</maintainer>
