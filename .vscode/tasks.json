@@ -80,9 +80,9 @@
                 "sae3",
                 "openlanes",
                 "fase1_25",
-                "fase2",
+                "fase2_25",
                 "fase3",
-                "fase4",
+                "fase4_25",
                 "default"
             ],
             "default": "sae1"
