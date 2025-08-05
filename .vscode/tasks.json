@@ -67,6 +67,20 @@
             "close": true
             },
             "problemMatcher": []
+        },
+        {
+            "label": "ground station",
+            "detail": "Launch Ground Station",
+            "type": "shell",
+            "command": "./tasks/ground_station.sh ${input:packageSelect}",
+            "problemMatcher": []
+        },
+        {
+            "label": "onboard",
+            "detail": "Launch Onboard FSM",
+            "type": "shell",
+            "command": "./tasks/onboard.sh ${input:packageSelect}",
+            "problemMatcher": []
         }
     ],
     "inputs": [
@@ -103,6 +117,18 @@
                 "custom_msgs"
             ],
             "default": "all"
+        },
+        {
+            "id": "packageSelect",
+            "description": "Which CBR package to launch?",
+            "type": "pickString",
+            "options": [
+                "cbr_fase1",
+                "cbr_fase2",
+                "cbr_fase3",
+                "cbr_fase4"
+            ],
+            "default": "cbr_fase1"
         }
     ]
 }
