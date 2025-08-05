@@ -45,6 +45,10 @@ case $1 in
         PX4_GZ_MODEL_POSE="8.0, 2.0, 0.6, 0.0, 0.0, 1.57"
         PX4_SIM_MODEL=x500_simulation
         ;;
+    itajuba_fase4)
+        PX4_GZ_MODEL_POSE="8.0, 2.0, 0.6, 0.0, 0.0, 1.57"
+        PX4_SIM_MODEL=x500_simulation
+        ;;
     *)
         PX4_GZ_MODEL_POSE="0.0, 0.0, 0.0, 0.0, 0.0, 0.0"
         PX4_SIM_MODEL=x500_simulation

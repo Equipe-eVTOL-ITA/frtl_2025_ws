@@ -2,4 +2,4 @@
 
 - implementar o arquivo fase4.lauch.py
 
-- implementar o arquivo params.yalm
+- implementar o arquivo params.yaml

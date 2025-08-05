@@ -2,6 +2,8 @@
 #include <rclcpp/rclcpp.hpp>
 #include "drone/Drone.hpp"
 
+#include "TakeoffState.hpp"
+
 using namespace fsm;
 
 typedef Eigen::Vector3d V3;
@@ -29,10 +31,15 @@ public:
         this->blackboard_set<float>("initial_yaw", orientation[2]);
         float takeoff_height = std::get<double>(params.at("takeoff_height"));
     
-        //this->add_state("INITIAL TAKEOFF", make_unique<TakeoffState>());
-   
+        this->add_state("TAKEOFF", std::make_unique<TakeoffState>());
+        
+        this->add_transitions("TAKEOFF", {
+            {"INITIAL TAKEOFF COMPLETED", "FINISHED"},
+            {"SEG FAULT", "ERROR"}
+        });
+
         /*
-        this->add_transitions("INITIAL TAKEOFF", {
+        this->add_transitions("estado de partida", {
             {"output do estado", "novo estado"},
             {"outro output do estado", "outro novo estado"}
         });
@@ -45,8 +52,11 @@ public:
     NodeFSM(std::shared_ptr<Drone> drone) : rclcpp::Node("fase4_fsm") {
         this->drone_ptr_ = drone;
         
+        // valores padrao (podem ser sobrescritos pelo .yaml)
         Params default_params = {
-            {"takeoff_height", -2.0}  
+            {"takeoff_height", -2.0},
+            {"max_vertical_velocity", 2.0},
+            {"max_height_error", 0.15}
         };
         
         auto params = this->setupParams(default_params);

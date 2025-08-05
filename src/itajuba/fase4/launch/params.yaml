@@ -1,0 +1,5 @@
+fase4_fsm:
+  ros__parameters:
+    takeoff_height: -2.5
+    max_vertical_velocity: 2.0
+    max_height_error: 0.15
