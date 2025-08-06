@@ -30,20 +30,51 @@ public:
 
         this->blackboard_set<float>("initial_yaw", orientation[2]);
         float takeoff_height = std::get<double>(params.at("takeoff_height"));
-    
+
         this->add_state("TAKEOFF", std::make_unique<TakeoffState>());
-        
+        this->add_state("SEARCH_LANE", std::make_unique<SearchLaneState>());
+        this->add_state("FOLLOW_LANE", std::make_unique<FollowLaneState>());
+        this->add_state("ALIGN", std::make_unique<AlignState>());
+        this->add_state("LANDING", std::make_unique<LandingState>());
+        this->add_state("DELIVER", std::make_unique<DeliverState>());
+        this->add_state("ABOUT_FACE", std::make_unique<AboutFaceState>());
+
         this->add_transitions("TAKEOFF", {
-            {"INITIAL TAKEOFF COMPLETED", "FINISHED"},
+            {"INITIAL TAKEOFF COMPLETED", "SEARCH_LANE"},
+            {"TAKEOFF FROM CHECKPOINT", "ABOUT_FACE"},
             {"SEG FAULT", "ERROR"}
         });
 
-        /*
-        this->add_transitions("estado de partida", {
-            {"output do estado", "novo estado"},
-            {"outro output do estado", "outro novo estado"}
+        this->add_transitions("SEARCH_LANE", {
+            {"LANE FOUND", "FOLLOW_LANE"},
+            {"SEG FAULT", "ERROR"}
         });
-        */
+
+        this->add_transitions("FOLLOW_LANE", {
+            {"CHECKPOINT FOUND", "ALIGN"},
+            {"SEG FAULT", "ERROR"}
+        });
+
+        this->add_transitions("ALIGN", {
+            {"PRECISELY ALIGNED", "LANDING"},
+            {"SEG FAULT", "ERROR"}
+        });
+
+        this->add_transitions("LANDING", {
+            {"ARRIVED AT CHECKPOINT", "DELIVER"},
+            {"RETURNED HOME", "FINISHED"},
+            {"SEG FAULT", "ERROR"}
+        });
+
+        this->add_transitions("DELIVER", {
+            {"SUCCESSFULLY DELIVERED THE PAYLOAD", "TAKEOFF"}
+            {"SEG FAULT", "ERROR"}
+        });
+
+        this->add_transitions("ABOUT_FACE", {
+            {"TURNED AROUND", "FOLLOW_LANE"},
+            {"SEG FAULT", "ERROR"}
+        });
     }
 };
 
