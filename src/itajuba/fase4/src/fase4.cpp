@@ -1,8 +1,15 @@
 #include "fsm/fsm.hpp"
 #include <rclcpp/rclcpp.hpp>
 #include "drone/Drone.hpp"
+#include "vision.cpp"
 
 #include "TakeoffState.hpp"
+#include "SearchLaneState.hpp"
+#include "FollowLaneState.hpp"
+#include "AlignState.hpp"
+#include "LandingState.hpp"
+#include "DeliverState.hpp"
+#include "AboutFaceState.hpp"
 
 using namespace fsm;
 
