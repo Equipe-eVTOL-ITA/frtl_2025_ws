@@ -47,4 +47,8 @@
 
 [submodule "src/oak_vio"]
     path = src/oak_vio
-    url = https://github.com/Equipe-eVTOL-ITA/oak_vio.git
+    url = https://github.com/Equipe-eVTOL-ITA/oak_vio.
+
+[submodule "src/itajuba"]
+    path = src/itajuba
+    url = https://github.com/Equipe-eVTOL-ITA/itajuba.git
