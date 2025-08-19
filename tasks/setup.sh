@@ -47,6 +47,13 @@ else
     echo "robocup_2025 directory already exists. Skipping clone."
 fi
 
+#itajuba
+if [ ! -d "$SRC_DIR/itajuba" ]; then
+    git clone https://github.com/Equipe-eVTOL-ITA/itajuba.git $SRC_DIR/itajuba
+else
+    echo "itajuba directory already exists. Skipping clone."
+fi
+
 #camera_publisher
 if [ ! -d "$SRC_DIR/camera_publisher" ]; then
     git clone https://github.com/Equipe-eVTOL-ITA/camera_publisher.git $SRC_DIR/camera_publisher
