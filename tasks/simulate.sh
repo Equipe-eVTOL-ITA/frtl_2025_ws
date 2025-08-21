@@ -24,7 +24,7 @@ case $1 in
         
         # Copiar arquivo de caminho gerado (se existir)
         if [ -f ~/frtl_2025_ws/src/itajuba/fase4/bezier_random/generated_path.sdf ]; then
-            cp ~/frtl_2025_ws/src/itajuba/fase4/bezier_random/generated_path.sdf ~/PX4-Autopilot/Tools/simulation/gz/worlds/
+            cp ~/frtl_2025_ws/src/itajuba/fase4/bezier_random/generated_path.sdf ~/PX4-Autopilot/Tools/simulation/gz/models/generated_path/model.sdf
         fi
         
         PX4_GZ_MODEL_POSE="0.0, 0.0, 0.05, 0.0, 0.0, 0.0"
