@@ -129,7 +129,8 @@
                 "sae_2025",
                 "slam_bridge",
                 "oak_vio",
-                "custom_msgs"
+                "custom_msgs",
+                "itajuba"
             ],
             "default": "all"
         },

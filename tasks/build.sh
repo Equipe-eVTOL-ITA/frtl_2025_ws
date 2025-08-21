@@ -34,6 +34,9 @@ elif [ $1 = custom_msgs ]
 then
     rm -rf ~/frtl_2025_ws/build/custom_msgs ~/frtl_2025_ws/install/custom_msgs ~/frtl_2025_ws/log/custom_msgs
     BUILD_PATH="--paths src/custom_msgs"
+elif [ $1 = itajuba ]
+then
+    BUILD_PATH="--paths src/itajuba/*"
 else
     exit 1
 fi
