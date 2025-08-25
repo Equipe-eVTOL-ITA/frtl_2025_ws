@@ -66,6 +66,10 @@ case $1 in
         PX4_GZ_MODEL_POSE="0.0, 0.0, 0.0, 0.0, 0.0, 0.0"
         PX4_SIM_MODEL=x500_simulation
         ;;
+    itajuba_fase3)
+        PX4_GZ_MODEL_POSE="0.0, 0.0, 0.05, 0.0, 0.0, 0.0"
+        PX4_SIM_MODEL=x500_itajuba   
+        ;;
 esac
 
 #Multi-vehicles: usar script simulation-gazebo - descomentar as duas linhas
