@@ -45,7 +45,7 @@ if [ -e install/setup.bash ]
 then
     source install/setup.bash
 else
-    source /opt/ros/humble/setup.bash
+    source /opt/ros/jazzy/setup.bash
 fi
 
 # Set the default build type

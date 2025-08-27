@@ -10,7 +10,7 @@ cd $WORKSPACE_DIR
 mkdir -p $SRC_DIR
 
 # Instala dependências do ROS e PX4
-sudo apt install ros-humble-vision-msgs
+sudo apt install ros-jazzy-vision-msgs
 
 #px4_msgs
 if [ ! -d "$SRC_DIR/px4_msgs" ]; then
@@ -85,12 +85,12 @@ echo "Inicializando submódulos..."
 git submodule update --init --recursive
 
 # ROS2 Humble <--> Gazebo Garden communication
-sudo apt-get remove -y ros-humble-ros-gz*
-sudo apt-get install -y ros-humble-ros-gzgarden
+sudo apt-get remove -y ros-jazzy-ros-gz*
+#sudo apt-get install -y ros-jazzy-ros-gzgarden
 
 # Compila o workspace
 cd $WORKSPACE_DIR
-source /opt/ros/humble/setup.bash
+source /opt/ros/jazzy/setup.bash
 
 BUILD_TYPE=RelWithDebInfo
 colcon build \
